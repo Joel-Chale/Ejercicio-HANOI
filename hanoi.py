@@ -1,40 +1,34 @@
 import time
 
+movimientos = 0
 
 def torre_hanoi(n, origen, auxiliar, destino):
-    """Resuelve recursivamente la Torre de Hanoi."""
+    global movimientos
+
     if n == 1:
-        print(f"Mover disco 1 de {origen} a {destino}")
-        return
-
-    torre_hanoi(n - 1, origen, destino, auxiliar)
-    print(f"Mover disco {n} de {origen} a {destino}")
-    torre_hanoi(n - 1, auxiliar, origen, destino)
-
-
-def contar_movimientos(n):
-    return 2**n - 1
-
-
-def medir_tiempo(discos):
-    inicio = time.perf_counter()
-
-    movimientos = contar_movimientos(discos)
-
-    fin = time.perf_counter()
-    tiempo = fin - inicio
-
-    print(f"Discos: {discos}")
-    print(f"Movimientos necesarios: {movimientos:,}")
-    print(f"Tiempo de cálculo: {tiempo:.8f} segundos")
-    print("-" * 40)
-
+        movimientos += 1
+    else:
+        torre_hanoi(n - 1, origen, destino, auxiliar)
+        movimientos += 1
+        torre_hanoi(n - 1, auxiliar, origen, destino)
 
 def main():
-    cantidades = [5, 10, 30, 64]
+    discos = [5, 10, 30, 64]
 
-    for discos in cantidades:
-        medir_tiempo(discos)
+    for n in discos:
+        cantidad = 2 ** n - 1
+        print(f"\nDiscos: {n}")
+        print(f"Movimientos necesarios: {cantidad:,}")
+
+        global movimientos
+        movimientos = 0
+
+        inicio = time.perf_counter()
+        torre_hanoi(n, "A", "B", "C")
+        fin = time.perf_counter()
+
+        print(f"Movimientos realizados: {movimientos:,}")
+        print(f"Tiempo de ejecución: {fin - inicio:.6f} segundos")
 
 
 if __name__ == "__main__":

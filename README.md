@@ -26,11 +26,11 @@ Tiempo de cálculo: 0.00000270 segundos
 
 Discos: 30
 Movimientos necesarios: 1,073,741,823
-Tiempo de cálculo: 0.00000120 segundos
+Tiempo de cálculo: 57.07958 segundos
 
 Discos: 64
 Movimientos necesarios: 18,446,744,073,709,551,615
-Tiempo de cálculo: 0.00000110 segundos
+Tiempo de cálculo: no termino
 
 
 - Conclusión:
